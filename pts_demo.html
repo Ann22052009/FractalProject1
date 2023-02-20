@@ -1,0 +1,83 @@
+﻿<html>
+<body>
+<canvas id="myCanvas" width="800" height="800"></canvas><br>
+<script>
+var xmin=-2,ymin=-2,scale=100;
+var x,y,i,iq,xt,il;
+var cx,cy;
+var color,colo3r,colo2r;
+var canvas = document.getElementById('myCanvas');
+canvas.addEventListener("mousedown",zoom,false);
+var context = canvas.getContext('2d');
+mandel();
+var img = ctx.createImageData(canvas.width, 1);
+function addRGB(v, w)
+{
+  v[0] += w[0];
+  v[1] += w[1];
+  v[2] += w[2];
+  v[3] += w[3];
+  return v;
+}
+
+function divRGB(v, div)
+{
+  v[0] /= div;
+  v[1] /= div;
+  v[2] /= div;
+  v[3] /= div;
+  return v;
+}
+function getColorPicker()
+{
+  var p = $("colorScheme").value;
+  if ( p == "pickColorHSV1" ) return pickColorHSV1;
+  if ( p == "pickColorHSV2" ) return pickColorHSV2;
+  if ( p == "pickColorHSV3" ) return pickColorHSV3;
+  if ( p == "pickColorGrayscale2" ) return pickColorGrayscale2;
+  return pickColorGrayscale;
+}
+
+function zoom(event)
+        {
+                xmin=xmin+Math.floor(event.pageX/3)/scale;
+                ymin=-Math.floor(event.pageY/3)/scale+300/scale+ymin;
+                scale=scale*2;
+                mandel();
+        }
+
+function mandel(){
+                for(x=0;x<500;x++){
+                        for(y=0;y<500;y++){
+                                i=0;
+                                iq = 255;
+                                il = 0;
+                                cx=xmin+x/scale;
+                                cy=ymin+y/scale;
+                                zx=0;
+                                zy=0;
+                                do{
+                                    xt=zx*zy;
+                                    zx=zx*zx-zy*zy+cx;
+                                    zy=2*xt+cy;
+                                    i++;
+                                    //iq--;
+                                    //il++;
+                                }
+                                while(i<255&&il<255&&(zx*zx+zy*zy)<2);
+                                    color=i.toString(20);
+                                    colo3r=iq.toString(20);
+                                    colo2r=il.toString(20);
+                                    context.beginPath();
+                                    context.rect(x, 800-y, 1, 1);
+                                    context.fillStyle ='#'+color+color+color;
+                                    context.fill();
+
+
+                        }
+                }
+        }
+
+</script>
+</body>
+</html>
