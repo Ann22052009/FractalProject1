@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  margin: 0;
+  font-size: 28px;
+}
+
+
+.header {
+  background-color:  #DB7093;
+  padding: 30px;
+  text-align: center;
+}
+
+#navbar {
+  overflow: hidden;
+  background-color:  #191990;
+      position: relative;
+}
+
+#navbar a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+      position: relative;
+}
+
+#navbar a:hover {
+  background-color: #191980;
+  color: white;
+      position: relative;
+}
+
+#navbar a.active {
+  background-color:  #191990;
+  color: white;
+      position: relative;
+}
+
+.content {
+  padding: 16px;
+  font-color: #270A1F;
+  font: CONSOLAS
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.sticky + .content {
+  padding-top: 60px;
+}
+.car{
+	position:absolute;
+	left:500px;
+	top:525px;
+	width:370px;
+
+}
+.inl {
+    display: inline-block;
+}
+.container{
+    text-align: center;
+    color: white;
+    position: relative;
+}
+.text-block {
+    position: absolute;
+    up: 1100px;
+    right: 1000px;
+    background-color: black;
+    color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.centered {
+    position: absolute;
+    top: 62%;
+    left: 49%;
+    transform: translate(-50%, -50%);
+    font-size: 80%;
+    color: white;
+    ./background:rgba(0,0,0,0.4);
+    border:3px;
+    width: 500px;
+    padding: 100px 0 100px 15px;/
+
+}
+.centered1 {
+    position: absolute;
+    top: 52%;
+    left: 49%;
+    transform: translate(-50%, -50%);
+        font-size: 80%;
+    color: white;
+
+}
+
+.background-tint {
+  filter:  saturate(100%) brightness(70%);
+
+}
+.background-tint1 {
+  filter:  saturate(100%) brightness(0%);
+
+}
+
+body {
+    background-color: #202025;
+}
+</style>
+</head>
+<body>
+<div id="navbar">
+  <a href="#gallery">Fractals gallery</a>
+  <a href="#literature">Useful literature/references</a>
+  <a href="#us">About us</a>
+</div>
+
+<div class="container">
+  <img class = "background-tint" src=").png" alt="Snow" style="width:100%;">
+
+  <div class = "centered">Here you can learn somthing new about algebraic fractals</div>
+   <div class = "centered1"> Welcome to Fractalchik</div>
+</div>
+
+<script>
+
+window.onscroll = function() {myFunction()};
+
+var navbar = document.getElementById("navbar");
+var sticky = navbar.offsetTop;
+
+function myFunction() {
+  if (window.pageYOffset >= sticky) {
+    navbar.classList.add("sticky")
+  } else {
+    navbar.classList.remove("sticky");
+  }
+}
+</script>
+  <h1 name = "#gallerystyle" style="color:white; padding-left: 530px;font-size:90%;">GALLERY</h1>
+  <img src="mand.png" alt="Snow" style="width:30%; high:40%;  padding-left: 225px;"> <img class = "background-tint1" src="mand.png" alt="Snow" style="width:30%; high:40%;  padding-left: 900;">
+  <img class = "background-tint1" src="mand.png" alt="Snow" style="width:30%; high:40%;  padding-left: 225px;"> <img class = "background-tint1" src="mand.png" alt="Snow" style="width:30%; high:40%;  padding-left: 900;">
+  <img class = "background-tint1" src="mand.png" alt="Snow" style="width:30%; high:40%;  padding-left: 225px;"> <img class = "background-tint1" src="mand.png" alt="Snow" style="width:30%; high:40%;  padding-left: 900;">
+
+</body>
+</html>
