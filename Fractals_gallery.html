@@ -205,7 +205,13 @@ function mandel(){
                                 context.beginPath();
                                 context.rect(x, 1000-y, 1, 1);
 <!--                                context.fillStyle = "rgb("+i+","+i+","+i+")";-->
-                                context.fillStyle = `rgba(${i*3},${i*2},${i*7}, ${1})`;
+                                if (i > 40 && i<245){
+                                  for(h=40;h<245;h++){
+                                    context.fillStyle = `rgba(${h/5},${h/6},${h/4}, ${1})`;
+                                  }
+                                }else{
+                                  context.fillStyle = `rgba(${i*3},${i*2},${i*7}, ${1})`;
+                                }
                                 context.fill();
 
 
