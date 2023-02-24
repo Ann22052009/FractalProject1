@@ -2,224 +2,26 @@
 <html lang="ru">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body {
-  margin: 0;
-  font-size: 28px;
-}
-
-
-.header {
-  background-color:  #DB7093;
-  padding: 30px;
-  text-align: center;
-}
-
-#navbar {
-  overflow: hidden;
-  background-color:  #191990;
-      position: relative;
-        width: 90px;
-}
-
-#navbar a {
-  float: left;
-  display: block;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-
-  font-size: 17px;
-      position: relative;
-}
-
-#navbar a:hover {
-  background-color: #191980;
-  color: white;
-      position: relative;
-}
-
-#navbar a.active {
-  background-color:  #191990;
-  color: white;
-      position: relative;
-}
-
-.content {
-  padding: 16px;
-  font-color: #270A1F;
-  font: CONSOLAS
-}
-
-.sticky {
-  position: fixed;
-  top: 0;
-  width: 100%;
-}
-
-.sticky + .content {
-  padding-top: 60px;
-}
-.car{
-	position:absolute;
-	left:500px;
-	top:525px;
-	width:370px;
-
-}
-.inl {
-    display: inline-block;
-}
-.container{
-    text-align: center;
-    color: white;
-    position: relative;
-}
-.text-block {
-    position: absolute;
-    up: 1100px;
-    right: 1000px;
-    background-color: black;
-    color: white;
-    padding-left: 20px;
-    padding-right: 20px;
-}
-.centered {
-    position: absolute;
-    top: 62%;
-    left: 49%;
-    transform: translate(-50%, -50%);
-    font-size: 80%;
-    color: white;
-    ./background:rgba(0,0,0,0.4);
-    border:3px;
-    width: 500px;
-    padding: 100px 0 100px 15px;/
-
-}
-.centered1 {
-    position: absolute;
-    top: 52%;
-    left: 49%;
-    transform: translate(-50%, -50%);
-        font-size: 80%;
-    color: white;
-
-}
-
-body {
-    background-color: #202025;
-}
-
-head {
-    background-color: #202025;
-}
-.centerw {
-    position: absolute;
-    bottom: 10%;
-    left: 30%;
-
-}
-
-.background-tint {
-  filter:  saturate(100%) brightness(70%);
-
-}
-</style>
+<link rel="stylesheet" type="text/css" href="Fg.css" media="screen"/>
   <div id="navbar">
   <a href="Best.html"> < Back</a>
 </div>
-  <canvas id="myCanvas" width="1000" height="1000" class = "centerw"></canvas><br>
-<script>
-var xmin=-2,ymin=-2,scale=100;
-var x,y,i,iq,xt,il;
-var cx,cy;
-var color,colo3r,colo2r;
-var canvas = document.getElementById('myCanvas');
-canvas.addEventListener("mousedown",zoom,false);
-var context = canvas.getContext('2d');
-mandel();
-var img = ctx.createImageData(canvas.width, 1);
-var image = context.getImageData(0, 0, width, height);
-var pixels = image.data;
-
-
-function addRGB(v, w)
-{
-  v[0] += w[0];
-  v[1] += w[1];
-  v[2] += w[2];
-  v[3] += w[3];
-  return v;
-}
-
-function divRGB(v, div)
-{
-  v[0] /= div;
-  v[1] /= div;
-  v[2] /= div;
-  v[3] /= div;
-  return v;
-}
-function getColorPicker()
-{
-  var p = $("colorScheme").value;
-  if ( p == "pickColorHSV1" ) return pickColorHSV1;
-  if ( p == "pickColorHSV2" ) return pickColorHSV2;
-  if ( p == "pickColorHSV3" ) return pickColorHSV3;
-  if ( p == "pickColorGrayscale2" ) return pickColorGrayscale2;
-  return pickColorGrayscale;
-}
-
-function zoom(event)
-        {
-                xmin=xmin+Math.floor(event.pageX/5.5)/scale;
-                ymin=-Math.floor(event.pageY/5.5)/scale+185/scale+ymin;
-                scale=scale*2;
-                mandel();
-        }
-
-function mandel(){
-                for(x=0;x<500;x++){
-                        for(y=0;y<500;y++){
-                                i=0;
-                                iq = 255;
-                                il = 100;
-                                flag = false;
-                                cx=xmin+x/scale;
-                                cy=ymin+y/scale;
-                                zx=0;
-                                zy=0;
-
-			                    do{
-                                    xt=zx*zy;
-                                    zx=zx*zx-zy*zy+cx;
-                                    zy=2*xt+cy;
-                                    i++;
-                                    //iq--;
-                                    //il++;
-
-                                }
-                                while(i<255&&il<255&&(zx*zx+zy*zy)<2);
-                                context.beginPath();
-                                context.rect(x, 1000-y, 1, 1);
-<!--                                context.fillStyle = "rgb("+i+","+i+","+i+")";-->
-                                if (i > 40 && i<245){
-                                  for(h=40;h<245;h++){
-                                    context.fillStyle = `rgba(${h/5},${h/6},${h/4}, ${1})`;
-                                  }
-                                }else{
-                                  context.fillStyle = `rgba(${i*3},${i*2},${i*7}, ${1})`;
-                                }
-                                context.fill();
-
-
-                        }
-                }
-        }
-
-</script>
+  <canvas id="myCanvas" width="800" height="900" class = "centerw"></canvas><br>
+<p>If you want to change color zoom</p>
+<div class="slidecontainer">
+  <input type="range" min="1" max="10" value="1" class="slider" id="myRange">
+  <p style="font-color = white;">Value: <span id="demo"></span></p>
+</div>
+  <div class="slidecontainer1">
+  <input type="range" min="1" max="10" value="1" class="slider1" id="myRange1">
+  <p style="font-color = white;">Value: <span id="demo1"></span></p>
+</div>
+    <div class="slidecontainer2">
+  <input type="range" min="1" max="10" value="1" class="slider2" id="myRange2">
+  <p style="font-color = white;">Value: <span id="demo2"></span></p>
+</div>
+<button type="submit" onclick="">do!</button>
+<script src = "Fg.js"></script>
 </head>
 <body>
 
